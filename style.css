@@ -5,6 +5,14 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#error{
+    display: none;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    font-size: 12px;
+    color: #f00
+}
+
 .container{
     background: #171717;
     color: #fff;
