@@ -1,6 +1,9 @@
 //state
-let currentCity = "Abuja"
+let currentCity = ""
 let units = "metric"
+
+//error
+let error = document.getElementById('error');
 
 //selectors
 let city = document.querySelector(".weather-city");
@@ -75,6 +78,12 @@ function getWeather(){
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=${units}`).then(res => res.json()).then(data => {
         console.log(data)
+        console.log(data.cod)
+        if(data.cod == '404'){
+            error.style.display = "block"
+        } else {
+            error.style.display = "none"
+        }
         city.innerHTML = `${data.name},${convertCountryCode(data.sys.country)}`
         datetime.innerHTML = convertTimeStamp(data.dt, data.timezone);
         weatherforecast.innerHTML = `<p>${data.weather[0].main}`
